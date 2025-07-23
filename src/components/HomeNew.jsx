@@ -8,7 +8,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import EnhancedCard from "./EnhancedCard";
 
 const TypewriterEffect = ({ text, delay = 100 }) => {
   const [displayText, setDisplayText] = useState("");
@@ -143,7 +142,7 @@ const Home = ({ scrollToSection }) => {
                 Hi there, I'm
               </p>
               <h1 className="text-6xl md:text-8xl font-bold mb-6">
-                <span className="text-gradient">
+                <span className="hero-name">
                   <TypewriterEffect text="Pratik Harsora" delay={100} />
                 </span>
               </h1>
@@ -216,56 +215,67 @@ const Home = ({ scrollToSection }) => {
             </motion.div>
           </div>
 
-          {/* 3D Avatar/Profile Area */}
+          {/* Profile/Avatar Area */}
           <motion.div
             variants={itemVariants}
             className="flex-1 flex justify-center lg:justify-end"
           >
-            <EnhancedCard
-              variant="glass"
-              tiltEffect
-              glowEffect
-              className="w-80 h-80 md:w-96 md:h-96 flex items-center justify-center"
+            <motion.div
+              className="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center glass-card rounded-3xl shadow-floating hover:shadow-glow transition-all duration-300"
+              whileHover={{ scale: 1.02, rotateY: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative">
-                {/* Profile Image Placeholder */}
-                <div className="w-64 h-64 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-6xl font-bold text-primary">
+                {/* Profile Image/Avatar */}
+                <motion.div
+                  className="w-64 h-64 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-6xl font-bold text-primary shadow-inner"
+                  animate={{
+                    boxShadow: [
+                      "0 0 20px rgba(var(--primary), 0.3)",
+                      "0 0 40px rgba(var(--primary), 0.5)",
+                      "0 0 20px rgba(var(--primary), 0.3)",
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
                   PH
-                </div>
+                </motion.div>
 
                 {/* Floating Tech Icons */}
                 {[
-                  { tech: "React", angle: 0 },
-                  { tech: "Node", angle: 60 },
-                  { tech: "JS", angle: 120 },
-                  { tech: "TS", angle: 180 },
-                  { tech: "DB", angle: 240 },
-                  { tech: "AI", angle: 300 },
-                ].map(({ tech, angle }) => (
+                  { tech: "⚛️", label: "React", angle: 0 },
+                  { tech: "🟢", label: "Node", angle: 60 },
+                  { tech: "💛", label: "JS", angle: 120 },
+                  { tech: "🔷", label: "TS", angle: 180 },
+                  { tech: "🗃️", label: "DB", angle: 240 },
+                  { tech: "🤖", label: "AI", angle: 300 },
+                ].map(({ tech, label, angle }) => (
                   <motion.div
-                    key={tech}
-                    className="absolute w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-xs font-bold text-white shadow-neon"
+                    key={label}
+                    className="absolute w-12 h-12 glass-card rounded-full flex items-center justify-center text-lg shadow-floating hover:shadow-glow cursor-pointer"
                     style={{
                       top: "50%",
                       left: "50%",
-                      transformOrigin: "6px 6px",
+                      transform: "translate(-50%, -50%)",
                     }}
                     animate={{
-                      rotate: [angle, angle + 360],
-                      x: [0, Math.cos((angle * Math.PI) / 180) * 140],
-                      y: [0, Math.sin((angle * Math.PI) / 180) * 140],
+                      x: Math.cos((angle * Math.PI) / 180) * 140,
+                      y: Math.sin((angle * Math.PI) / 180) * 140,
+                      rotate: [0, 360],
                     }}
                     transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear",
+                      x: { duration: 20, repeat: Infinity, ease: "linear" },
+                      y: { duration: 20, repeat: Infinity, ease: "linear" },
+                      rotate: { duration: 5, repeat: Infinity, ease: "linear" },
                     }}
+                    whileHover={{ scale: 1.2, zIndex: 10 }}
+                    title={label}
                   >
                     {tech}
                   </motion.div>
                 ))}
               </div>
-            </EnhancedCard>
+            </motion.div>
           </motion.div>
         </motion.div>
 

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider } from 'next-themes';
-import Header from './Header';
-import Home from './Home';
-import SkillsAndExperience from './SkillsAndExperience';
-import Education from './Education';
-import Projects from './Projects';
-import Contact from './Contact';
-import Footer from './Footer';
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import Home from "./HomeNew";
+import SkillsAndExperience from "./SkillsAndExperience";
+import Education from "./Education";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -18,8 +18,14 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'skills-experience', 'education', 'projects', 'contact'];
-      const currentSection = sections.find(section => {
+      const sections = [
+        "home",
+        "skills-experience",
+        "education",
+        "projects",
+        "contact",
+      ];
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -32,14 +38,14 @@ const Portfolio = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -48,17 +54,25 @@ const Portfolio = () => {
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="min-h-screen bg-background text-foreground">
-        <Header activeSection={activeSection} scrollToSection={scrollToSection} />
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Theme Switcher - Fixed Position */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Header
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+        />
         <Home scrollToSection={scrollToSection} />
         <SkillsAndExperience />
         <Education />
         <Projects />
         <Contact />
         <Footer />
-      </div>
-    </ThemeProvider>
+      </motion.div>
+    </div>
   );
 };
 
