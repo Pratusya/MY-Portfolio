@@ -27,7 +27,7 @@ These are basic data types that are directly operated upon by machine-level inst
 |-----------|-------------|---------|
 | Integer | Whole numbers | int age = 25 |
 | Float | Decimal numbers | float pi = 3.14 |
-| Character | Single character | char grade = A |
+| Character | Single character | char grade = 'A' |
 | Boolean | True/False values | bool flag = true |
 
 ### 2. Non-Primitive Data Structures:
@@ -168,13 +168,13 @@ Mathematical tools used to describe the running time of an algorithm when the in
 - Represents the **worst-case** scenario
 - f(n) = O(g(n)) if f(n) <= c*g(n) for all n >= n0
 
-#### 2. Omega Notation - Lower Bound:
+#### 2. Ω (Omega) Notation - Lower Bound:
 - Represents the **best-case** scenario
-- f(n) = Omega(g(n)) if f(n) >= c*g(n) for all n >= n0
+- f(n) = Ω(g(n)) if f(n) >= c*g(n) for all n >= n0
 
-#### 3. Theta Notation - Tight Bound:
+#### 3. Θ (Theta) Notation - Tight Bound:
 - Represents the **average-case** scenario
-- f(n) = Theta(g(n)) if c1*g(n) <= f(n) <= c2*g(n) for all n >= n0
+- f(n) = Θ(g(n)) if c1*g(n) <= f(n) <= c2*g(n) for all n >= n0
 
 ### Common Time Complexities:
 
@@ -1621,8 +1621,8 @@ Grows MST from a starting vertex by adding minimum weight edge.
 **MST Edges:** A-C(1), C-B(2), B-D(3)
 **Total Weight:** 1 + 2 + 3 = **6**
 
-### Kruskals Algorithm:
-Sorts all edges and adds minimum weight edges that dont form cycle.
+### Kruskal's Algorithm:
+Sorts all edges and adds minimum weight edges that don't form cycle.
 
 **Sorted Edges:** A-C(1), B-C(2), B-D(3), A-B(4), C-D(5)
 
@@ -1691,7 +1691,6 @@ Before:          After:
          \            /  
          [4]        [3]
 ```
-Wait, let me recalculate...
 
 **Insert 4:**
 ```
@@ -1724,7 +1723,6 @@ No rotation needed.
              /                     /  \
            [7]                   [8]   
 ```
-Wait, need to reconsider...
 
 ### Final AVL Tree (after all insertions and rotations):
 ```
@@ -1743,12 +1741,12 @@ Wait, need to reconsider...
 
 ---
 
-## Q30. Apply Dijkstras algorithm on graph with Node A as starting node.
+## Q30. Apply Dijkstra's algorithm on graph with Node A as starting node.
 **(GTU: S24, W23, W22, S21) [7 Marks]**
 
 ### Answer:
 
-### Dijkstras Algorithm:
+### Dijkstra's Algorithm:
 Finds shortest path from source to all vertices in weighted graph.
 
 ### Example Graph:
