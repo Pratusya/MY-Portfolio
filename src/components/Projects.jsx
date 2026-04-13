@@ -67,7 +67,7 @@ const Projects = () => {
       title: "AI Quiz Generator",
       description:
         "Completed AI-powered quiz platform that generates personalized quizzes based on user preferences, now live in production.",
-      image: "/api/placeholder/400/300",
+      image: "/images/image.png",
       technologies: ["React", "Node.js", "PostgreSQL"],
       github: "https://github.com/Pratusya/quiz-ai-app",
       demo: "https://ai-quizlab.netlify.app/",
@@ -155,16 +155,31 @@ const Projects = () => {
                   whileHover={{ scale: 1.05 }}
                   className="flex-1 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/5 border border-border/50 backdrop-blur-sm min-h-[300px] max-w-lg"
                 >
+                  {project.image?.startsWith("/images/") && (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  )}
+
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-30">
+                  <div className="absolute inset-0 opacity-30 pointer-events-none">
                     <div className="absolute top-4 left-4 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
                     <div className="absolute bottom-4 right-4 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
                   </div>
 
                   {/* Project Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-8xl opacity-20 text-primary">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div
+                      className={`text-8xl text-primary ${
+                        project.image?.startsWith("/images/")
+                          ? "opacity-0"
+                          : "opacity-20"
+                      }`}
+                    >
                       {project.category === "fullstack"
                         ? "⚡"
                         : project.category === "frontend"
@@ -172,6 +187,10 @@ const Projects = () => {
                           : "💻"}
                     </div>
                   </div>
+
+                  {project.image?.startsWith("/images/") && (
+                    <div className="absolute inset-0 bg-background/35 pointer-events-none" />
+                  )}
 
                   {/* Hover Actions */}
                   <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
