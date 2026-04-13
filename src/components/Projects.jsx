@@ -66,7 +66,7 @@ const Projects = () => {
       id: 6,
       title: "AI Quiz Generator",
       description:
-        "An AI-powered quiz generator that creates personalized quizzes based on user preferences.",
+        "Completed AI-powered quiz platform that generates personalized quizzes based on user preferences, now live in production.",
       image: "/api/placeholder/400/300",
       technologies: ["React", "Node.js", "PostgreSQL"],
       github: "https://github.com/Pratusya/quiz-ai-app",
