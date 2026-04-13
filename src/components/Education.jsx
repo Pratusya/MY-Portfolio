@@ -39,11 +39,12 @@ const Education = () => {
         </motion.div>
 
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
+          {/* First Education Card */}
           <motion.div
             className="relative rounded-2xl p-8 border border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-300"
             whileHover={{
@@ -51,7 +52,7 @@ const Education = () => {
               transition: { duration: 0.2 },
             }}
           >
-            <div className="flex items-start gap-6">
+            <div className="flex flex-col items-start gap-6">
               {/* College Logo */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -86,7 +87,7 @@ const Education = () => {
                   >
                     <Calendar className="w-4 h-4 text-primary" />
                     <span className="text-gray-300">
-                      2022 - 2025 | Pursuing
+                      2022 - 2025 | Completed
                     </span>
                   </motion.div>
 
@@ -110,6 +111,90 @@ const Education = () => {
                       "Database Management Systems",
                       "Web Development",
                       "Computer Networks",
+                    ].map((course, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-3 p-3 rounded-xl transition-all bg-card/50 backdrop-blur-sm"
+                        whileHover={{ x: 5, scale: 1.02 }}
+                      >
+                        <BookOpen className="w-4 h-4 text-primary" />
+                        <span className="text-gray-300">{course}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Second Education Card */}
+          <motion.div
+            className="relative rounded-2xl p-8 border border-primary/20 bg-card/50 backdrop-blur-sm transition-all duration-300"
+            whileHover={{
+              transform: "translateY(-5px)",
+              transition: { duration: 0.2 },
+            }}
+          >
+            <div className="flex flex-col items-start gap-6">
+              {/* College Logo */}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="relative w-16 h-16 rounded-xl overflow-hidden bg-primary/10"
+              >
+                <img
+                  src="/clglogo.jpg"
+                  alt="College Logo"
+                  className="w-full h-full object-cover relative z-10"
+                />
+              </motion.div>
+
+              {/* Content */}
+              <div className="space-y-6 flex-1">
+                <div>
+                  <motion.h2
+                    className="text-2xl font-bold mb-2 text-primary"
+                    whileHover={{ x: 5 }}
+                  >
+                    SN Patel Institute Of Technology
+                  </motion.h2>
+                  <p className="text-lg font-medium text-primary/80">
+                    Bachlors in Computer Science and Engineering
+                  </p>
+                </div>
+
+                {/* Info Section */}
+                <div className="flex flex-wrap gap-6">
+                  <motion.div
+                    className="flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm"
+                    whileHover={{ x: 5 }}
+                  >
+                    <Calendar className="w-4 h-4 text-primary" />
+                    <span className="text-gray-300">
+                      2025 - 2028 | Pursuing
+                    </span>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm"
+                    whileHover={{ x: 5 }}
+                  >
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <span className="text-gray-300">Surat, Gujarat</span>
+                  </motion.div>
+                </div>
+
+                {/* Courses Grid */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 text-primary">
+                    Key Courses
+                  </h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      "Data Structures and Algorithms",
+                      "Database Management Systems",
+                      "Web Development",
+                      "Computer Networks",
+                      "Algorithms Design & Analysis",
                     ].map((course, index) => (
                       <motion.div
                         key={index}

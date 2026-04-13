@@ -64,13 +64,13 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: "Blog Platform",
+      title: "AI Quiz Generator",
       description:
-        "A full-featured blog platform with admin panel and content management.",
+        "An AI-powered quiz generator that creates personalized quizzes based on user preferences.",
       image: "/api/placeholder/400/300",
       technologies: ["React", "Node.js", "PostgreSQL"],
-      github: "https://github.com/pratikharsora",
-      demo: "https://github.com/pratikharsora",
+      github: "https://github.com/Pratusya/quiz-ai-app",
+      demo: "https://ai-quizlab.netlify.app/",
       category: "fullstack",
     },
   ];
@@ -168,8 +168,8 @@ const Projects = () => {
                       {project.category === "fullstack"
                         ? "⚡"
                         : project.category === "frontend"
-                        ? "🎨"
-                        : "💻"}
+                          ? "🎨"
+                          : "💻"}
                     </div>
                   </div>
 
